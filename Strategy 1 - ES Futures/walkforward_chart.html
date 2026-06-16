@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html><head><title>Walk-Forward Test</title>
+<style>
+  body { background: #0d1117; color: #e0e0e0; font-family: monospace; padding: 20px; }
+  h1 { color: #58a6ff; }
+  table { border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 8px 14px; border: 1px solid #30363d; }
+  th { background: #1a1a2e; }
+  tr:nth-child(even) { background: #161b22; }
+</style></head><body>
+<h1>Walk-Forward Test — HA+RSI 3-Lot MTF (60m+15m), US Morning</h1>
+<p>Total composite P&amp;L: <b>$+117,851</b> | 3/4 folds profitable | Avg PF: 1.38 | Avg WR: 67.0%</p>
+<img src="figures/walkforward_haRSI_3lot_15m_morning.png" style="max-width:100%;border:1px solid #30363d;">
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Fold</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Bars</th>
+      <th>Entries</th>
+      <th>$ P&amp;L</th>
+      <th>Return %</th>
+      <th>WR %</th>
+      <th>PF</th>
+      <th>MaxDD $</th>
+      <th>Worst Entry $</th>
+      <th>Avg Stop $/lot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Q1</td>
+      <td>2025-11-30</td>
+      <td>2026-01-18</td>
+      <td>3009</td>
+      <td>120</td>
+      <td>$+34,915</td>
+      <td>+69.8%</td>
+      <td>69.6%</td>
+      <td>1.68</td>
+      <td>$11,821</td>
+      <td>$-2,943</td>
+      <td>$513</td>
+    </tr>
+    <tr>
+      <td>Q2</td>
+      <td>2026-01-18</td>
+      <td>2026-03-09</td>
+      <td>3210</td>
+      <td>139</td>
+      <td>$+29,045</td>
+      <td>+58.1%</td>
+      <td>67.1%</td>
+      <td>1.24</td>
+      <td>$18,537</td>
+      <td>$-5,556</td>
+      <td>$807</td>
+    </tr>
+    <tr>
+      <td>Q3</td>
+      <td>2026-03-09</td>
+      <td>2026-04-27</td>
+      <td>3177</td>
+      <td>123</td>
+      <td>$+58,686</td>
+      <td>+117.4%</td>
+      <td>69.6%</td>
+      <td>1.64</td>
+      <td>$15,209</td>
+      <td>$-10,253</td>
+      <td>$911</td>
+    </tr>
+    <tr>
+      <td>Q4</td>
+      <td>2026-04-27</td>
+      <td>2026-06-15</td>
+      <td>3222</td>
+      <td>149</td>
+      <td>$-4,794</td>
+      <td>-9.6%</td>
+      <td>61.7%</td>
+      <td>0.96</td>
+      <td>$33,258</td>
+      <td>$-8,570</td>
+      <td>$696</td>
+    </tr>
+  </tbody>
+</table>
+</body></html>

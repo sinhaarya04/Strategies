@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+\definecolor{green}{HTML}{3fb950}
+\definecolor{red}{HTML}{f85149}
+
+\title{ES E-mini Futures: Multi-Timeframe Strategy Findings\\[0.3em]
+\large Heikin Ashi EMA Band + RSI --- 60m Bias Filter}
+\author{Quantitative Research}
+\date{June 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Overview}
+We tested a multi-timeframe (MTF) strategy on ES E-mini futures (via SPY as proxy) using 1 year of 5-minute data from Polygon.io (June 2025--May 2026, 47{,}580 bars). The strategy uses a 60-minute directional bias filter with lower-timeframe entries: one variant enters on 15-minute bars, the other on 5-minute bars. Each was grid-searched across 440 combinations (10 ATR stop multipliers $\times$ 11 ATR target multipliers $\times$ 4 session windows).
+
+\section*{Strategy Logic}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{60m Bias:} On each 60-min bar, compute Heikin Ashi close, 20-period EMA bands (High/Low), and RSI(14). If HA close $>$ EMA(High) and RSI $> 55$: \textcolor{green}{BUY bias}. If HA close $<$ EMA(Low) and RSI $< 45$: \textcolor{red}{SELL bias}. Otherwise: NEUTRAL.
+    \item \textbf{Entry (15m or 5m):} Only enter when the lower-timeframe signal \emph{aligns} with the 60m bias. Same HA EMA + RSI crossover logic on the entry timeframe.
+    \item \textbf{Exit:} ATR-based stop loss, ATR-based take profit (or reversal signal), whichever hits first.
+\end{itemize}
+
+\section*{Key Findings: 60m + 15m}
+\begin{itemize}[leftmargin=1.5em]
+    \item Of 440 combos tested, a \textbf{moderate number} achieved PF $\geq 1.0$.
+    \item The 15m timeframe produces \textbf{fewer trades} due to coarser bar resolution (15{,}860 bars vs.\ 47{,}580 at 5m).
+    \item Best combos clustered in the \textbf{US Morning session} (09:30--13:00 ET), consistent with ES open volatility.
+    \item Wide stops with no take-profit tended to outperform on Profit Factor, suggesting trending behavior during the morning session that rewards letting winners run.
+\end{itemize}
+
+\section*{Key Findings: 60m + 5m}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{430 of 440 combos profitable} (PF $\geq 1.0$) --- dramatically better hit rate than the 15m variant.
+    \item \textbf{Best Profit Factor:} 2.09 (US Morning, SL=3.0x ATR, no TP) --- 282 trades, 54\% win rate, \$8{,}369 P\&L.
+    \item \textbf{Best dollar P\&L:} \$13{,}358 (All Day, SL=2.5x, TP=2.5x ATR) --- 1{,}396 trades, 49\% win rate, PF 1.35.
+    \item 60m bias distribution on 5m bars: BUY=21{,}532 \textbar\ SELL=10{,}583 \textbar\ NEUTRAL=15{,}465.
+    \item The \textbf{5m granularity} captures entries the 15m bars miss --- 3$\times$ more entry opportunities while the 60m filter keeps quality high.
+    \item \textbf{US Morning dominates:} top 8 combos by PF are all US Morning, with PF ranging from 1.76 to 2.09.
+    \item \textbf{Overnight session} is weakest (PF 1.09--1.13), consistent with lower liquidity and choppy price action.
+    \item \textbf{No-target combos} (let winners run via reversal exit) consistently achieve higher PF than fixed TP combos, but fixed TP combos generate higher absolute P\&L due to more trade completions.
+    \item Max drawdown across all combos ranged from 10--39 points (\$500--\$1{,}935 on a single contract).
+\end{itemize}
+
+\section*{Comparative Summary}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Metric} & \textbf{60m + 15m} & \textbf{60m + 5m} \\
+\midrule
+Entry timeframe bars & 15{,}860 & 47{,}580 \\
+Profitable combos (of 440) & Moderate & 430 (98\%) \\
+Best PF (US Morning) & $\sim$1.2--1.4 & \textbf{2.09} \\
+Best \$ P\&L & Lower & \textbf{\$13{,}358} \\
+Trade frequency & Lower & $\sim$3$\times$ higher \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Recommendation}
+\begin{itemize}[leftmargin=1.5em]
+    \item The \textbf{60m + 5m variant is strictly superior} to 60m + 15m across all metrics.
+    \item For \textbf{highest edge quality}: US Morning session, SL=3.0x ATR, no fixed TP (PF 2.09, fewer trades, clean signals).
+    \item For \textbf{highest absolute return}: All Day, SL=2.5x, TP=2.5x ATR (\$13{,}358, more trades, lower PF).
+    \item Next steps: test Fisher Transform as an alternative entry signal with fixed-point (non-ATR) stops/targets for more linear risk sizing.
+\end{itemize}
+
+\end{document}
+
+
+
+❯ ok just focus on full-house engine andread and study it properly                                                                                                                  
+
+⏺ Let me explore the fullhouse-engine directory structure and read through its files.
+
+  Searched for 1 pattern, read 4 files, listed 1 directory (ctrl+o to expand)
+
+⏺ Now let me read all the core source files — engine, sandbox, bots, and tests.
+
+  Searched for 3 patterns, read 5 files (ctrl+o to expand)
+
+⏺ Now let me read all the reference bots and the remaining files.
+
+  Read 9 files (ctrl+o to expand)
+
+⏺ I've now read every source file in the repo. Here's the full breakdown:
+
+  ---
+  fullhouse-engine — Complete Architecture
+
+  This is the E[X] Showdown engine, a No-Limit Texas Hold'em poker bot competition framework built by Northeastern's E[X] Prediction Markets Club.
+
+  Core Flow
+
+  1. Bot interface — You write a single decide(game_state) -> dict function. The engine calls it once per action with full game state (hole cards, community cards, pot, stacks,
+  action log). You return fold/check/call/raise/all_in.
+  2. Game engine (engine/game.py, ~600 lines) — PokerEngine class implements complete NLHE rules:
+    - 2-9 players, correct heads-up rules (dealer=SB, SB first preflop, BB first postflop)
+    - Full side-pot computation for multiple all-in levels
+    - Short all-in handling (doesn't reopen action unless raise >= last full raise)
+    - BB option preflop
+    - Chip invariant checking after every hand
+    - Deterministic/seeded deck via eval7 cards
+    - Rich event log (street_start, blind, action, showdown with hand strength labels)
+    - Blinds: SB=50, BB=100, starting stack=10,000
+  3. Match orchestrator (sandbox/match.py) — run_match() runs N bots for K hands:
+    - Spawns each bot as a subprocess via runner.py (dev) or Docker container (prod)
+    - Communication is newline-delimited JSON over stdin/stdout
+    - Warmup call before hand 1 (30s budget) for bots loading heavy data
+    - Cross-hand match_action_log (last 200 entries) passed to bots for opponent modeling
+    - Supports .py files, directories with data/, and .zip archives
+  4. Bot runner (sandbox/runner.py) — Loads bot.py, loops on stdin JSON, calls decide() with 2s thread-based timeout, emits fold on timeout/crash.
+  5. Validator (sandbox/validator.py) — Pre-submission checks:
+    - AST-based forbidden import/call detection (no network, subprocess, threading, eval, exec, etc.)
+    - 4 test scenarios (preflop, postflop, river, short-stack)
+    - Size limits: 5MB bot.py, 200MB data/, 250MB total
+    - Zip path traversal / symlink protection
+  6. Tournament (engine/tournament.py) — Swiss-system pairing + standings:
+    - Sorts by cumulative_delta, then fewer matches, then best single match, then alphabetic
+    - select_finalists() takes top-N
+  7. Demo server (demo.py) — Flask app on port 5001 with SSE-powered terminal UI. Runs single matches or 3-round Swiss tournaments against 6 reference bots.
+
+  Reference Bots
+
+  ┌───────────────┬────────────────────────────────────────────────────────────────────────────┐
+  │      Bot      │                                  Strategy                                  │
+  ├───────────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ Template      │ Raises pocket AA/KK 3x pot, checks free, calls < 25% pot, else folds       │
+  ├───────────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ Aggressor     │ 70% chance to raise 2-4x min, else check/call                              │
+  ├───────────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ Mathematician │ Only calls at 3:1+ pot odds, else folds                                    │
+  ├───────────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ Shark         │ Tight preflop (hand strength tiers), position-aware postflop value betting │
+  ├───────────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ Ref Bot 2     │ Pure pot-odds caller (same as Mathematician but slightly simpler)          │
+  └───────────────┴────────────────────────────────────────────────────────────────────────────┘
+
+  Production Infrastructure
+
+  - Docker sandbox: Python 3.10-slim, --network none, --read-only, 768MB RAM, 0.5 CPU, non-root user
+  - Postgres schema (db/schema.sql): Supabase-based with users, bots, tournaments, matches, hands, leaderboard tables + RLS + realtime subscriptions
+  - record_match_result() stored procedure: updates match_bots, upserts leaderboard with dense_rank
+
+  Key Constraints for Bot Building
+
+  - 2s per decision, 30s warmup for imports
+  - No network, no file writes, no threading/async
+  - Available libs: eval7, numpy, scipy, treys, scikit-learn
+  - Can ship up to 200MB of precomputed data (CFR blueprints, NN weights, lookup tables) in data/
+  - 400 hands per match in qualifier, top 64 advance
+
+  What do you want to do with this? Build a bot?
+
+✻ Crunched for 1m 18s
+
+❯ ok so now let's plan it out now that i wanna host this competiton on a scale for my club like approx 100 again how shld we and what more to include db and how and what else to   
+add                                                                                                                                                                                 
+
+⏺ Entered plan mode
+  Claude is now exploring and designing an implementation approach.
+
+⏺ Let me ask a few key questions to scope this properly before designing the plan.
+  ⎿  Tool use rejected
+
+⏺ What would you like to clarify? Tell me more about what you're thinking for the setup and I'll adjust the questions.
+
+✻ Cogitated for 40s
+
+❯ what do you think is a good option for this?                                                                                                                                      
+
+⏺ Here's what I'd recommend for ~100 participants at a club event:
+
+  Infra: Supabase + Vercel + 1 VPS
+  - The Postgres schema already targets Supabase (auth, RLS, realtime are all written). Free tier handles 100 users easily.
+  - Vercel for the frontend (Next.js) — also free tier, zero devops.
+  - One beefy VPS (DigitalOcean/Hetzner, ~$20-40/mo) just for running match workers with Docker. This is the only piece that needs a real server since Vercel/Supabase can't run
+  Docker containers.
+  - Supabase Storage for bot file uploads (replaces needing S3).
+
+  Frontend: Full portal
+  - At 100 people, email-based submissions would be chaos. You need: signup/login (Supabase Auth handles this), bot upload with instant validation feedback, live leaderboard
+  (Supabase Realtime is already wired in the schema), and hand history download.
+  - Next.js + Supabase client is fast to build and the stack is well-documented.
+
+  Match runner: Docker sandbox
+  - With 100 strangers, you can't trust subprocess mode. The Docker sandbox is already built — --network none, --read-only, 768MB RAM, 0.5 CPU per bot. One match (6 bots, 400
+  hands) takes ~30-60s. A single 8-core VPS can run ~4 matches in parallel, churning through a 100-bot Swiss tournament in minutes.
+
+  What needs to be built on top of what exists:
+  1. Submission API — upload endpoint, triggers validator, stores in Supabase Storage
+  2. Match queue worker — BullMQ or simple Redis queue on the VPS, pulls matches, runs Docker, writes results back via record_match_result()
+  3. Tournament orchestrator — automated Swiss pairing across rounds (logic exists in tournament.py, needs a controller)
+  4. Next.js portal — login, upload, leaderboard, hand replay
+  5. Admin panel — start/pause tournament, DQ bots, monitor workers
+                                                                                                                                                                                    
+⏺ User declined to answer questions                                                                                                                                                 
+                                      

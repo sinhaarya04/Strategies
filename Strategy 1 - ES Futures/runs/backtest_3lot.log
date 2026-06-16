@@ -1,0 +1,74 @@
+Fetching 5m data...
+[DATA] Loaded 37,855 ES 5m bars from Bloomberg parquet (real futures, 24h)
+[DATA] Range: 2025-11-30 18:00:00-05:00 -> 2026-06-15 13:05:00.000000139-04:00
+
+================================================================================
+  Timeframe: 15min | 12619 bars
+================================================================================
+
+  All Day (15min)
+    Entries: 1498  |  Exit events: 2646
+    Total P&L: +195.52 pts  |  Avg per entry: +0.13 pts
+    Win%: 53.1%  |  PF: 1.009
+    TP1: 755  TP2: 393  TP3: 257  Stop: 743  BE Stop: 498
+
+  Overnight (00:00-04:00) (15min)
+    Entries: 458  |  Exit events: 812
+    Total P&L: +474.32 pts  |  Avg per entry: +1.04 pts
+    Win%: 53.0%  |  PF: 1.133
+    TP1: 231  TP2: 123  TP3: 76  Stop: 227  BE Stop: 155
+
+  US Morning (04:00-13:00) (15min)
+    Entries: 976  |  Exit events: 1699
+    Total P&L: -202.45 pts  |  Avg per entry: -0.21 pts
+    Win%: 51.9%  |  PF: 0.986
+    TP1: 483  TP2: 240  TP3: 158  Stop: 493  BE Stop: 325
+
+  US Afternoon (13:00-17:00) (15min)
+    Entries: 302  |  Exit events: 526
+    Total P&L: -608.07 pts  |  Avg per entry: -2.01 pts
+    Win%: 52.3%  |  PF: 0.899
+    TP1: 150  TP2: 74  TP3: 51  Stop: 152  BE Stop: 99
+
+================================================================================
+  Timeframe: 60min | 3158 bars
+================================================================================
+
+  All Day (60min)
+    Entries: 419  |  Exit events: 718
+    Total P&L: -799.74 pts  |  Avg per entry: -1.91 pts
+    Win%: 51.0%  |  PF: 0.934
+    TP1: 204  TP2: 96  TP3: 66  Stop: 215  BE Stop: 137
+
+  Overnight (00:00-04:00) (60min)
+    Entries: 144  |  Exit events: 246
+    Total P&L: -593.68 pts  |  Avg per entry: -4.12 pts
+    Win%: 50.0%  |  PF: 0.828
+    TP1: 68  TP2: 35  TP3: 20  Stop: 76  BE Stop: 47
+
+  US Morning (04:00-13:00) (60min)
+    Entries: 345  |  Exit events: 590
+    Total P&L: -234.27 pts  |  Avg per entry: -0.68 pts
+    Win%: 51.4%  |  PF: 0.974
+    TP1: 166  TP2: 79  TP3: 58  Stop: 179  BE Stop: 108
+
+  US Afternoon (13:00-17:00) (60min)
+    Entries: 153  |  Exit events: 258
+    Total P&L: -754.84 pts  |  Avg per entry: -4.93 pts
+    Win%: 50.8%  |  PF: 0.863
+    TP1: 69  TP2: 36  TP3: 26  Stop: 84  BE Stop: 43
+
+==============================================================================================================
+  3-LOT SCALED EXIT — ALL COMBOS  [P&L in POINTS]
+==============================================================================================================
+   TF                    Session  Entries  Exits  Total(pts)  Avg/Entry(pts)  Win%   PF  TP1  TP2  TP3  Stop  BE_Stop
+15min    Overnight (00:00-04:00)      458    812      474.32            1.04 52.96 1.13  231  123   76   227      155
+15min                    All Day     1498   2646      195.52            0.13 53.10 1.01  755  393  257   743      498
+15min   US Morning (04:00-13:00)      976   1699     -202.45           -0.21 51.85 0.99  483  240  158   493      325
+60min   US Morning (04:00-13:00)      345    590     -234.27           -0.68 51.36 0.97  166   79   58   179      108
+60min                    All Day      419    718     -799.74           -1.91 50.97 0.93  204   96   66   215      137
+15min US Afternoon (13:00-17:00)      302    526     -608.07           -2.01 52.28 0.90  150   74   51   152       99
+60min US Afternoon (13:00-17:00)      153    258     -754.84           -4.93 50.78 0.86   69   36   26    84       43
+60min    Overnight (00:00-04:00)      144    246     -593.68           -4.12 50.00 0.83   68   35   20    76       47
+
+Chart saved to backtest_3lot_chart.html and opened in browser.

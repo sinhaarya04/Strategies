@@ -1,0 +1,24 @@
+Fetching 5m data...
+[DATA] Loaded 37,855 ES 5m bars from Bloomberg parquet (real futures, 24h)
+[DATA] Range: 2025-11-30 18:00:00-05:00 -> 2026-06-15 13:05:00.000000139-04:00
+Computing 5m indicators (entry timeframe)...
+Computing 60m indicators (bias)...
+5m bars: 37855 | 60m bars: 3158
+RSI thresholds: Buy > 55, Sell < 45
+60m bias distribution on 5m bars: BUY=14767 SELL=10039 NEUTRAL=13049
+====================================================================================================
+  All Day                         E= 1907  P&L= +5339.49pts  $  +266,975  Ret=+533.9%  WR= 68.0%  PF=1.329  AvgStop= 8.18pts($409)  Worst=-179.37pts
+  Overnight (00:00-04:00)         E=  459  P&L=  +773.24pts  $   +38,662  Ret= +77.3%  WR= 66.8%  PF=1.352  AvgStop= 4.68pts($234)  Worst= -44.47pts
+  US Morning (04:00-13:00)        E=  936  P&L= +3308.97pts  $  +165,449  Ret=+330.9%  WR= 68.3%  PF=1.382  AvgStop= 9.30pts($465)  Worst=-179.37pts
+  US Afternoon (13:00-17:00)      E=  326  P&L=  +393.48pts  $   +19,674  Ret= +39.3%  WR= 66.0%  PF=1.101  AvgStop=10.02pts($501)  Worst= -84.26pts
+
+============================================================================================================================================
+  HA+RSI 3-LOT MTF (60m bias + 5m entries) — ALL RUNS (sorted by PF)
+============================================================================================================================================
+                   Session  Entries  Exits  Total(pts)  Total($)  Return(%)  FinalAcct($)  Avg/Entry(pts)  Win%   PF  AvgATR(pts)  AvgStop(pts)  AvgStop($/lot)  MaxStop(pts)  BestEntry(pts)  WorstEntry(pts)  WorstEntry($)  TP1  TP2  TP3  Stop  BE_Stop  Trail_Stop
+  US Morning (04:00-13:00)      936   1897     3308.97 165448.68     330.90     215448.68            3.54 68.27 1.38         6.20          9.30          465.02         62.97          126.38          -179.37       -8968.42  627  334  184   309      293         150
+   Overnight (00:00-04:00)      459    913      773.24  38662.10      77.32      88662.10            1.68 66.81 1.35         3.12          4.68          234.04         14.82           53.18           -44.47       -2223.59  298  156   86   161      142          70
+                   All Day     1907   3835     5339.49 266974.53     533.95     316974.53            2.80 68.03 1.33         5.46          8.18          409.15         62.97          144.76          -179.37       -8968.42 1247  681  367   660      566         314
+US Afternoon (13:00-17:00)      326    638      393.48  19673.82      39.35      69673.82            1.21 65.99 1.10         6.68         10.02          501.03         31.57          126.28           -84.26       -4212.79  203  109   58   123       94          51
+
+Chart saved to backtest_haRSI_3lot_mtf_5m_chart.html and opened in browser.

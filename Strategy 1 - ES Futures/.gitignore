@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.DS_Store
+.env
+
+# Excluded — too large for GitHub (>5MB HTML outputs from grid sweeps)
+compare_chart.html
+session_chart.html
+backtest_chart.html
+backtest_fisher_chart.html
+backtest_fisher_ema_chart.html
+backtest_fisher_3lot_chart.html
+backtest_fisher_3lot_mtf_chart.html
+backtest_fisher_3lot_5min_chart.html
+backtest_fisher_3lot_15min_chart.html
+backtest_fisher_3lot_mtf_15m_chart.html
+backtest_haRSI_3lot_mtf_5m_chart.html
+
+# Local cache
+polygon_SPY_5m_365d.parquet
