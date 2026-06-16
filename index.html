@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Strategies — Aryan Sinha</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    color: #e0e0e0;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    min-height: 100vh;
+    padding: 0;
+  }
+  .header {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 28px 40px;
+  }
+  .header h1 {
+    color: #58a6ff;
+    font-size: 26px;
+    margin-bottom: 6px;
+    letter-spacing: 0.4px;
+  }
+  .header p {
+    color: #8b949e;
+    font-size: 13.5px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    gap: 22px;
+    padding: 36px 40px;
+  }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.18s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.18);
+  }
+  .card .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tag {
+    background: #d2992222;
+    color: #d29922;
+    border: 1px solid #d2992244;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.3px;
+  }
+  .card h2 {
+    color: #f0f6fc;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .card .sub {
+    color: #8b949e;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .stats {
+    border-top: 1px solid #21262d;
+    padding-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .stat .label {
+    color: #58a6ff;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  .stat .num {
+    color: #3fb950;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .stat.neutral .num { color: #c9d1d9; }
+  .open {
+    align-self: flex-start;
+    background: #21262d;
+    color: #58a6ff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+    transition: all 0.15s ease;
+    margin-top: 4px;
+  }
+  .card:hover .open {
+    background: #58a6ff;
+    color: #0d1117;
+    border-color: #58a6ff;
+  }
+  .footer {
+    color: #6e7681;
+    font-size: 11.5px;
+    padding: 24px 40px 36px;
+    border-top: 1px solid #21262d;
+    margin-top: 16px;
+  }
+  .footer a { color: #58a6ff; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Strategies</h1>
+  <p>Quantitative backtests — futures, equities, multi-timeframe MTF, scaled exits</p>
+</div>
+
+<div class="grid">
+
+  <a class="card" href="Strategy%201%20-%20ES%20Futures/dashboard.html">
+    <div class="top">
+      <h2>Strategy 1 — ES E-Mini Futures</h2>
+      <span class="tag">FUTURES</span>
+    </div>
+    <p class="sub">HA EMA + RSI signal with 3-lot scaled-exit ladder, gated by higher-timeframe bias. Tested across intraday (60m+5m, 60m+15m), 60m+Daily, and Daily+Weekly pairs on real ES Bloomberg + yfinance data.</p>
+    <div class="stats">
+      <div class="stat"><div class="label">Best PF</div><div class="num">4.27</div></div>
+      <div class="stat"><div class="label">Top Gross</div><div class="num">+$371k</div></div>
+      <div class="stat neutral"><div class="label">Best Pair</div><div class="num">D+W bias</div></div>
+    </div>
+    <span class="open">Open dashboard →</span>
+  </a>
+
+</div>
+
+<div class="footer">
+  Source · <a href="https://github.com/sinhaarya04/Strategies">github.com/sinhaarya04/Strategies</a>
+  &nbsp;·&nbsp; Aryan Sinha
+</div>
+
+</body>
+</html>
